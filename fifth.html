@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>5</title>
+		<script src="js/scripts.js"></script>		
+	</head>
+	<body>
+		<script>
+			var m = [
+				{
+					text: 'Животные',
+					childs: [
+						{
+							text: 'Млекопитающие',
+							childs: [
+								'Коровы',
+								'Ослы',
+								'Собаки',
+								'Тигры'
+							]
+						},
+						{
+							text: 'Рыбы',
+							childs: [
+								{
+									text: 'Аквариумные',
+									childs: [
+										'Гуппи',
+										'Скалярии',
+										'Гурами'
+									]
+								},
+								{
+									text: 'Морские',
+									childs: [
+										'Морская форель'
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					text: 'Растения',
+					childs: [
+						{
+							text: 'Высшие растения',
+							childs: [
+								'Споровые',
+								'Семенные'
+							]
+						},
+						{
+							text: 'Водоросли',
+							childs: [
+								{
+									text:'Бурые водоросли',
+									childs:[
+										'Ламинария',
+										'Фукус',
+									]
+								},
+								{
+									text:'Красные водоросли',
+									childs:[
+										'Филлофора'
+									]
+								}
+								
+							]
+						}
+					]
+				},
+				{
+					text: 'Грибы',
+					childs: [
+						{
+							text: 'Шляпочные',
+							childs: [
+								'Белый гриб',
+								'Мухомор'
+							]
+						},
+						{
+							text: 'Дрожжи'
+						},
+						{
+							text: 'Плесневые',
+							childs: [
+								'Мукор',
+								'Пеницилл'
+							]
+						}
+					]
+				},
+				{
+					text: 'Бактерии'
+				},
+				{
+					text: 'Вирусы'
+				}
+			]
+			function Create(m){
+				var ul = document.createElement('ul')
+				for (var child of m){
+					var li = document.createElement('li')
+					if (child.text !== undefined){
+						li.append(child.text)
+					}
+					if (typeof child !== 'object'){
+						li.append(child)
+					}
+					else if (child.childs !== undefined){
+						li.append(Create(child.childs))
+					}
+					ul.append(li)
+				}
+				return ul
+			}
+			document.body.append(Create(m));
+			
+			function forconsol(doc) {
+							if (doc.childNodes === undefined) return
+							for (var elementt of doc.childNodes) {
+								console.log(elemen.nodeName,  elementt.nodeValue)
+								forconsol(elementt)
+							}
+						}
+						forconsol(document);			
+		</script>
+	</body>
+</html>
